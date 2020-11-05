@@ -21,8 +21,7 @@ public class UserService {
     private MailSenderService mailSenderService;
     private VerificationTokenRepository verificationTokenRepository;
 
-    @Value("${spring.mail.username}")
-    private final String OWNER_ADDRESS_EMAIL = "alice.mine.36";
+    private final String OWNER_ADDRESS_EMAIL = "alice.mine.36@gmail.com";
 
     @Autowired
     public UserService(AppUserRepository appUserRepository, PasswordEncoder passwordEncoder, MailSenderService mailSenderService, VerificationTokenRepository verificationTokenRepository) {
@@ -48,7 +47,7 @@ public class UserService {
         try {
             mailSenderService.sendMail(appUser.getUsername(), "Verification token", url + "/verify-token?token=" + token, false);
             if (appUser.getRole().equals("ROLE_ADMIN")){
-                mailSenderService.sendMail(OWNER_ADDRESS_EMAIL + "@gmail.com", "Verification token", url + "/verify-token-owner?token=" + token, false);
+                mailSenderService.sendMail(OWNER_ADDRESS_EMAIL, "Verification token", url + "/verify-token-owner?token=" + token, false);
             }
         } catch (MessagingException e) {
             e.printStackTrace();
