@@ -1,0 +1,45 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <title>Registration page</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css"
+              integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
+    </head>
+
+    <body>
+        <div style="width: 800px; margin: auto; border: 1px #ccc solid; padding: 20px">
+            <div class="col-6 mx-auto mb-5">
+            <h3>Registration page</h3>
+            <form th:action="@{/register}" method="post">
+                <div class="form-row">
+                    <div class="col">
+                        <label for="username">Username</label>
+                        <input type="text" id="username" name="username"/> <br/>
+                    </div>
+                    <div class="col">
+                        <label for="password">Password  </label>
+                        <input type="password" id="password" name="password"/> <br/> <br/>
+                    </div>
+                </div>
+
+                <label for="role">Choose role</label>
+                <select id="role" name="role">
+                    <option value="ROLE_ADMIN">Admin</option>
+                    <option value="ROLE_USER">User</option>
+                </select> <br/>
+
+                <label for="sessionStorageInDays">Choose session expiration time in days</label>
+                <select id="sessionStorageInDays" name="sessionStorageInDays">
+                    <option value="7">7</option>
+                    <option value="21">21</option>
+                    <option value="28">28</option>
+                </select> <br/> <br/>
+
+                <input type="submit" value="Log in">
+            </form>
+            </div>
+        </div>
+    </body>
+</html>
